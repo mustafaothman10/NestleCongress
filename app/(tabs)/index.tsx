@@ -1,31 +1,24 @@
-import { StyleSheet } from 'react-native';
 
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+import { Pressable, Text, View } from "react-native";
 
-export default function TabOneScreen() {
+export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+    <View className="flex-1 items-center justify-center bg-gray-900 px-6">
+      <View className="w-full rounded-2xl bg-white p-6">
+        <Text className="text-2xl font-bold text-blue-600">
+          NativeWind is Working!
+        </Text>
+
+        <Text className="mt-2 text-base text-gray-500">
+          Testing Tailwind CSS in React Native.
+        </Text>
+
+        <Pressable className="mt-5 rounded-xl bg-blue-600 p-4">
+          <Text className="text-center font-bold text-white">
+            Test Button
+          </Text>
+        </Pressable>
+      </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-});
