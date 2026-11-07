@@ -1,6 +1,7 @@
-import GreetingUser from "@/components/GreetingUser";
-import QuickAccessItem from "@/components/QuickAccessItem";
-import UpcomingSession from "@/components/UpcomingSession";
+import GreetingUser from "@/components/home_page/GreetingUser";
+import QuickAccessItem from "@/components/home_page/QuickAccessItem";
+import UpcomingSession from "@/components/home_page/UpcomingSession";
+import Button from "@/components/ui/Button";
 import { Feather, Ionicons } from "@expo/vector-icons";
 import {
   Pressable,
@@ -138,9 +139,10 @@ export default function HomeScreen() {
               <Text className="text-[18px] font-bold text-[#f3f9ff]">
                 Quick Access
               </Text>
-              <Text className="text-[12px] font-semibold text-[#b0c9f1]">
-                View All
-              </Text>
+              <Button
+                label="View All"
+                variant="text"
+              />
             </View>
 
             <View className="flex-row flex-wrap justify-between">
@@ -153,9 +155,10 @@ export default function HomeScreen() {
               <Text className="text-[18px] font-bold text-[#f3f9ff]">
                 Upcoming Sessions
               </Text>
-              <Text className="text-[12px] font-semibold text-[#b0c9f1]">
-                View All
-              </Text>
+              <Button
+                label="View All"
+                variant="text"
+              />
             </View>
 
             <View className="space-y-3">
