@@ -1,31 +1,20 @@
-import { StyleSheet } from 'react-native';
 
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+import { Text, View } from "react-native";
 
-export default function TabOneScreen() {
+export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+    <View className="flex-1 items-center justify-center bg-gray-900 px-6">
+      <View className=" items-center justify-center rounded-4xl bgyello-600 p-3">
+        <Text className="text-2xl font-bold text-white-600">
+          Nestle Medical Congress
+        </Text>
+      </View>
+      <Text className="mt-2 text-[20px] text-gray-500">
+        NESTLE
+      </Text>
+      <Text className="mt-2 text-[20px] text-gray-500">
+        CONGRESS
+      </Text>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-});
