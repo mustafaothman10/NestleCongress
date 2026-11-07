@@ -12,6 +12,7 @@ type QuickAccessItemProps = {
   onPress?: PressableProps["onPress"];
   disabled?: boolean;
   iconSize?: number;
+  width?:number;
 };
 
 export default function QuickAccessItem({
@@ -19,6 +20,7 @@ export default function QuickAccessItem({
   onPress,
   disabled = false,
   iconSize = 22,
+  width=24
 }: QuickAccessItemProps) {
   return (
     <Pressable
@@ -30,8 +32,9 @@ export default function QuickAccessItem({
       style={({ pressed }) => ({
         opacity: pressed || disabled ? 0.7 : 1,
       })}
+      
       className={`
-        mb-4 w-[24%] items-center justify-center rounded-[18px]
+        mb-4 w-[${width}%] items-center justify-center rounded-[18px]
         border border-white/10 bg-white/5 p-3
         ${disabled ? "opacity-40" : ""}
       `}

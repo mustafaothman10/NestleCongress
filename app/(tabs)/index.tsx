@@ -3,6 +3,7 @@ import QuickAccessItem from "@/components/home_page/QuickAccessItem";
 import UpcomingSession from "@/components/home_page/UpcomingSession";
 import Button from "@/components/ui/Button";
 import { Feather, Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
 import {
   Pressable,
   ScrollView,
@@ -142,12 +143,12 @@ export default function HomeScreen() {
               <Button
                 label="View All"
                 variant="text"
-              />
+                onPress={() => router.push("/(quick_access)" as any)} />
             </View>
 
             <View className="flex-row flex-wrap justify-between">
               {quickAccessItems.map((item) => (
-                <QuickAccessItem key={item.label} item={item} />
+                <QuickAccessItem key={item.label} item={item} width={24} />
               ))}
             </View>
 
