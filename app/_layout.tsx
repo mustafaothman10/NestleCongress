@@ -23,6 +23,7 @@ export default function RootLayout() {
       <NavThemeProvider value={NAV_THEME[colorScheme]}>
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="(quick_access)" options={{ headerShown: false }} />
         </Stack>
       </NavThemeProvider>
     </>
