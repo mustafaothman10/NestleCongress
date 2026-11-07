@@ -2,7 +2,7 @@ import { SymbolView } from 'expo-symbols';
 
 import type { IconProps } from './types';
 
-import { useColorScheme } from '../../../lib/useColorScheme';
+import { useColorScheme } from '../../lib/useColorScheme';
 
 function Icon({
   materialCommunityIcon: _materialCommunityIcon,

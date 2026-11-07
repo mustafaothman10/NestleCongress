@@ -1,4 +1,4 @@
-import { Stack, ThemeProvider as NavThemeProvider } from 'expo-router';
+import { ThemeProvider as NavThemeProvider, Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import '../global.css';
 
@@ -21,7 +21,9 @@ export default function RootLayout() {
       />
 
       <NavThemeProvider value={NAV_THEME[colorScheme]}>
-        <Stack />
+        <Stack>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        </Stack>
       </NavThemeProvider>
     </>
   );

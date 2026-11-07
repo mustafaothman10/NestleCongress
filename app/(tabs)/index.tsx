@@ -1,24 +1,20 @@
 
-import { Pressable, Text, View } from "react-native";
+import { Text, View } from "react-native";
 
 export default function App() {
   return (
     <View className="flex-1 items-center justify-center bg-gray-900 px-6">
-      <View className="w-full rounded-2xl bg-white p-6">
-        <Text className="text-2xl font-bold text-blue-600">
-          NativeWind is Working!
+      <View className=" items-center justify-center rounded-4xl bgyello-600 p-3">
+        <Text className="text-2xl font-bold text-white-600">
+          Nestle Medical Congress
         </Text>
-
-        <Text className="mt-2 text-base text-gray-500">
-          Testing Tailwind CSS in React Native.
-        </Text>
-
-        <Pressable className="mt-5 rounded-xl bg-blue-600 p-4">
-          <Text className="text-center font-bold text-white">
-            Test Button
-          </Text>
-        </Pressable>
       </View>
+      <Text className="mt-2 text-[20px] text-gray-500">
+        NESTLE
+      </Text>
+      <Text className="mt-2 text-[20px] text-gray-500">
+        CONGRESS
+      </Text>
     </View>
   );
 }

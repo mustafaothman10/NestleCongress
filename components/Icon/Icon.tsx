@@ -7,7 +7,7 @@ import {
 
 import type { IconProps } from './types';
 
-import { useColorScheme } from '../../../lib/useColorScheme';
+import { useColorScheme } from '../../lib/useColorScheme';
 
 function Icon({
   name,
