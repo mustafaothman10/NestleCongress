@@ -1,8 +1,8 @@
+import SecondaryScreenHeader from "@/components/shared/SecondaryScreenHeader";
 import InfoRow from "@/components/tag/InfoRow";
 import Qrcode from "@/components/tag/Qrcode";
 import { Ionicons } from "@expo/vector-icons";
-import { router } from "expo-router";
-import { Pressable, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 
@@ -10,22 +10,8 @@ export default function NameTagScreen() {
     return (
         <SafeAreaView className="flex-1 bg-[#091d3e]">
             <View className="flex-1 bg-[#0a1630] px-4 pb-6 pt-4">
-                <View className="mb-5 flex-row items-center justify-between">
-                    <Pressable
-                        onPress={() => router.back()}
-                        className="h-9 w-9 items-center justify-center"
-                    >
-                        <Ionicons name="chevron-back" size={24} color="#edf6ff" />
-                    </Pressable>
 
-                    <Text className="flex-1 text-center text-[29px] font-bold text-white">
-                        My Name Tag
-                    </Text>
-
-                    <Pressable className="h-9 w-9 items-center justify-center rounded-xl bg-white/10">
-                        <Ionicons name="qr-code-outline" size={18} color="#edf6ff" />
-                    </Pressable>
-                </View>
+                <SecondaryScreenHeader title="My Name Tag" rightIcon="qr-code-outline" />
 
                 <View className="rounded-[24px] border border-white/10 bg-[#f4f8ff] p-4">
                     <Text className="text-center text-[15px] font-bold tracking-[1.5px] text-[#13305d]">
