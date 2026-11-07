@@ -34,7 +34,7 @@ export default function QuickAccessItem({
       })}
       
       className={`
-        mb-4 w-[${width}%] items-center justify-center rounded-[18px]
+        mb-4 min-w-[${width}%] items-center justify-center rounded-[18px]
         border border-white/10 bg-white/5 p-3
         ${disabled ? "opacity-40" : ""}
       `}
