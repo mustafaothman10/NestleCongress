@@ -124,7 +124,7 @@ export default function QuickAccessScreen() {
                 <SecondaryScreenHeader title="Quick Access" />
 
                 <ShowCard title=" Explore Congress Tools" description="Everything you need for the full event experience"
-                    iconName="sparkles-sharp" iconColor="red-600" />
+                    iconName="sparkles-sharp" iconColor="white" iconCoverColor="[#3c7ae7]" /> 
 
                 <SearchField />
                 <QuickAccessTabs activeTab={activeTab} onChange={setActiveTab} />

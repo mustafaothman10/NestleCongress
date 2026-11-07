@@ -1,6 +1,6 @@
 import { Pressable, PressableProps, Text, View } from "react-native";
 
-export interface IUpcomingSession {
+export interface Session {
   id?: number;
   title?: string;
   speaker?: string;
@@ -10,21 +10,21 @@ export interface IUpcomingSession {
   location?: string;
 }
 
-export interface IUpcomingSessionProps extends PressableProps {
-  session: IUpcomingSession;
+export interface SessionProps extends PressableProps {
+  session: Session;
   onPress?: () => void;
   compact?: boolean;
   showLocation?: boolean;
 }
 
-export default function UpcomingSession({
+export default function Session({
   session,
   onPress,
   compact = false,
   showLocation = false,
   accessibilityLabel,
   ...props
-}: IUpcomingSessionProps) {
+}: SessionProps) {
   const statusLabel =
     session.status === "live"
       ? "Live"

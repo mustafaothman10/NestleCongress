@@ -1,6 +1,6 @@
 import GreetingUser from "@/components/home_page/GreetingUser";
 import QuickAccessItem from "@/components/home_page/QuickAccessItem";
-import UpcomingSession from "@/components/home_page/UpcomingSession";
+import Session from "@/components/shared/Session";
 import Button from "@/components/ui/Button";
 import { Feather, Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
@@ -21,14 +21,14 @@ const overviewStats = [
 ] as const;
 
 const quickAccessItems = [
-  { label: "Agenda", icon: "calendar-outline", color: "#dfeeff" },
-  { label: "Speakers", icon: "people-outline", color: "#dfeeff" },
-  { label: "Name Tag", icon: "id-card-outline", color: "#dfeeff" },
-  { label: "Venue", icon: "location-outline", color: "#dfeeff" },
-  { label: "Voting", icon: "bar-chart-outline", color: "#dfeeff" },
-  { label: "Ask Q&A", icon: "help-circle-outline", color: "#dfeeff" },
-  { label: "Resources", icon: "document-text-outline", color: "#dfeeff" },
-  { label: "Exhibitors", icon: "briefcase-outline", color: "#dfeeff" },
+  { label: "Agenda", icon: "calendar-outline", color: "#dfeeff", href: "/agenda" },
+  { label: "Speakers", icon: "people-outline", color: "#dfeeff", href: "/speakers" },
+  { label: "Name Tag", icon: "id-card-outline", color: "#dfeeff", href: "/tag" },
+  { label: "Venue", icon: "location-outline", color: "#dfeeff", href: "/venue" },
+  { label: "Voting", icon: "bar-chart-outline", color: "#dfeeff", href: "/voting" },
+  { label: "Ask Q&A", icon: "help-circle-outline", color: "#dfeeff", href: "/ask" },
+  { label: "Resources", icon: "document-text-outline", color: "#dfeeff", href: "/resources" },
+  { label: "Exhibitors", icon: "briefcase-outline", color: "#dfeeff", href: "/exhibitors" },
 ] as const;
 
 const upcomingSessions = [
@@ -148,7 +148,7 @@ export default function HomeScreen() {
 
             <View className="flex-row flex-wrap justify-between">
               {quickAccessItems.map((item) => (
-                <QuickAccessItem key={item.label} item={item} width={24} />
+                <QuickAccessItem key={item.label} item={item} width={24} onPress={() => router.push(item.href as any)} />
               ))}
             </View>
 
@@ -164,7 +164,7 @@ export default function HomeScreen() {
 
             <View className="space-y-3">
               {upcomingSessions.map((session) => (
-                <UpcomingSession key={session.id} session={session} />
+                <Session key={session.id} session={session} />
               ))}
             </View>
           </ScrollView>
