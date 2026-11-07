@@ -1,11 +1,11 @@
 import { Pressable, PressableProps, Text, View } from "react-native";
 
 export interface IUpcomingSession {
-  id?: string;
-  title: string;
-  speaker: string;
-  time: string;
-  accent: string;
+  id?: number;
+  title?: string;
+  speaker?: string;
+  time?: string;
+  accent?: string;
   status?: "upcoming" | "live" | "starting-soon";
   location?: string;
 }
@@ -44,9 +44,8 @@ export default function UpcomingSession({
         `${session.title} by ${session.speaker} at ${session.time}`
       }
       hitSlop={8}
-      className={`mb-4 rounded-[18px] border border-white/10 bg-[#102a52]/80 ${
-        compact ? "p-2.5" : "p-3"
-      }`}
+      className={`mb-4 rounded-[18px] border border-white/10 bg-[#102a52]/80 ${compact ? "p-2.5" : "p-3"
+        }`}
       style={({ pressed }) => ({
         opacity: pressed ? 0.85 : 1,
         transform: [{ scale: pressed ? 0.985 : 1 }],
@@ -70,9 +69,8 @@ export default function UpcomingSession({
       </View>
 
       <Text
-        className={`font-bold text-[#f4f9ff] ${
-          compact ? "text-[14px]" : "text-[16px]"
-        }`}
+        className={`font-bold text-[#f4f9ff] ${compact ? "text-[14px]" : "text-[16px]"
+          }`}
       >
         {session.title}
       </Text>

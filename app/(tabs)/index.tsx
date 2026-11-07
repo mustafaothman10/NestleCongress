@@ -1,4 +1,6 @@
 import GreetingUser from "@/components/GreetingUser";
+import QuickAccessItem from "@/components/QuickAccessItem";
+import UpcomingSession from "@/components/UpcomingSession";
 import { Feather, Ionicons } from "@expo/vector-icons";
 import {
   Pressable,
@@ -29,12 +31,14 @@ const quickAccessItems = [
 
 const upcomingSessions = [
   {
+    id: 1,
     title: "Nutrition & Health",
     time: "09:30 AM",
     speaker: "Dr. Amina Reza",
     accent: "#7cd5a8",
   },
   {
+    id: 2,
     title: "Precision Medicine",
     time: "11:00 AM",
     speaker: "Dr. Ethan Cole",
@@ -64,7 +68,6 @@ export default function HomeScreen() {
                 <Ionicons name="notifications-outline" size={22} color="#eaf4ff" />
               </Pressable>
             </View>
-
             <GreetingUser name="Dr. Testing" />
 
             <View className="mt-[18px] flex-row items-center rounded-[18px] border border-white/10 bg-white/8 px-3 py-3">
@@ -78,10 +81,11 @@ export default function HomeScreen() {
             </View>
 
             <Pressable className="relative mt-5 overflow-hidden rounded-[22px] bg-[#163a63]/80 px-4 pb-[18px] pt-4">
-              <Text className="text-[10px] font-bold uppercase tracking-[1.2px] text-[#d6e7ff] opacity-90">
-                Featured Event
-              </Text>
-
+              <View className="self-start border border-[#e0c83d] px-2 py-1 rounded-full">
+                <Text className="text-[10px] font-bold uppercase tracking-[1.2px] text-[#e0c83d] opacity-90">
+                  Featured Event
+                </Text>
+              </View>
               <Text className="mt-2 max-w-[230px] text-[26px] font-bold leading-[30px] text-[#f4f9ff]">
                 The Next Era of{"\n"}Nutrition & Health
               </Text>
@@ -141,15 +145,7 @@ export default function HomeScreen() {
 
             <View className="flex-row flex-wrap justify-between">
               {quickAccessItems.map((item) => (
-                <Pressable
-                  key={item.label}
-                  className="items-center justify-center mb-4 w-[24%] rounded-[18px] border border-white/10 bg-white/5 p-3"
-                >
-                  <Ionicons name={item.icon as any} size={22} color={item.color} />
-                  <Text className="text-[11px] font-semibold text-[#edf6ff]">
-                    {item.label}
-                  </Text>
-                </Pressable>
+                <QuickAccessItem key={item.label} item={item} />
               ))}
             </View>
 
@@ -164,28 +160,7 @@ export default function HomeScreen() {
 
             <View className="space-y-3">
               {upcomingSessions.map((session) => (
-                <Pressable
-                  key={session.title}
-                  className="mb-4 rounded-[18px] border border-white/10 bg-[#102a52]/80 p-3"
-                >
-                  <View className="mb-2 flex-row items-center justify-between">
-                    <View
-                      className="h-2.5 w-2.5 rounded-full"
-                      style={{ backgroundColor: session.accent }}
-                    />
-                    <Text className="text-[11px] font-medium text-[#dbe9ff]">
-                      {session.time}
-                    </Text>
-                  </View>
-
-                  <Text className="text-[16px] font-bold text-[#f4f9ff]">
-                    {session.title}
-                  </Text>
-
-                  <Text className="mt-1 text-[12px] text-[#bfd5f8]">
-                    {session.speaker}
-                  </Text>
-                </Pressable>
+                <UpcomingSession key={session.id} session={session} />
               ))}
             </View>
           </ScrollView>
