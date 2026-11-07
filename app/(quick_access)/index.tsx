@@ -140,7 +140,7 @@ export default function QuickAccessScreen() {
                 >  <View className="flex-row flex-wrap justify-between">
 
                         {filteredItems.map((item) => (
-                            <QuickAccessItem key={item.id} item={item} width={48}/>
+                            <QuickAccessItem key={item.id} item={item} width={24}/>
                         ))}
                     </View>
                 </ScrollView>
