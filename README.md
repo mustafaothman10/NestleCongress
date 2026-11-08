@@ -99,6 +99,17 @@ The project includes a functional local authentication flow with:
 
 The app is designed to be expanded further with stronger security protections and route-level authorization.
 
+## Demo Users for Login
+The local demo database includes the following seeded users that can be used for sign-in during development and testing:
+
+| Name | Email | Password |
+| --- | --- | --- |
+| Sara Khalid | sara.khalid@example.com | demo123 |
+| John Müller | john.muller@example.com | demo123 |
+| Li Wei | li.wei@example.com | demo123 |
+
+These credentials are intended for local demo usage only and are not production-grade authentication values.
+
 ## Current App Scope
 The app currently includes the following functional areas:
 - authentication (login/signup)
