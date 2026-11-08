@@ -1,7 +1,4 @@
-import { openDatabaseAsync } from 'expo-sqlite';
-import { drizzle } from 'drizzle-orm/expo-sqlite';
-
-import { DB_NAME } from '../database/connection';
+import { getDb, initDatabase } from '../database/connection';
 import * as schema from '../database/schema';
 
 const seedData = {
@@ -25,6 +22,7 @@ const seedData = {
       id: 1,
       name: 'Sara Khalid',
       email: 'sara.khalid@example.com',
+      password: 'demo123',
       hospital: 'City General Hospital',
       location: 'Dubai',
       sessionsAttended: JSON.stringify([1, 2]),
@@ -35,6 +33,7 @@ const seedData = {
       id: 2,
       name: 'John Müller',
       email: 'john.muller@example.com',
+      password: 'demo123',
       hospital: 'St. Mary Clinic',
       location: 'Berlin',
       sessionsAttended: JSON.stringify([2, 3, 4]),
@@ -45,6 +44,7 @@ const seedData = {
       id: 3,
       name: 'Li Wei',
       email: 'li.wei@example.com',
+      password: 'demo123',
       hospital: null,
       location: null,
       sessionsAttended: JSON.stringify([]),
@@ -88,30 +88,22 @@ const seedData = {
 };
 
 export async function seedDatabaseIfEmpty(): Promise<void> {
-  if (process.env.NODE_ENV === 'production' && process.env.ALLOW_SEED !== 'true') {
+  await initDatabase();
+
+  const db = getDb();
+  const existing = await db.select().from(schema.users).limit(1);
+
+  if (existing.length > 0) {
     return;
   }
 
-  const client = await openDatabaseAsync(DB_NAME);
-
-  try {
-    const db = drizzle(client, { schema });
-    const existing = await db.select().from(schema.users).limit(1);
-
-    if (existing.length > 0) {
-      return;
-    }
-
-    await db.insert(schema.speakers).values(seedData.speakerRows).run();
-    await db.insert(schema.sessions).values(seedData.sessionRows).run();
-    await db.insert(schema.users).values(seedData.userRows).run();
-    await db.insert(schema.polls).values(seedData.pollRows).run();
-    await db.insert(schema.pollOptions).values(seedData.pollOptionRows).run();
-    await db.insert(schema.resources).values(seedData.resourceRows).run();
-    await db.insert(schema.questions).values(seedData.questionRows).run();
-    await db.insert(schema.answers).values(seedData.answerRows).run();
-    await db.insert(schema.venues).values(seedData.venueRows).run();
-  } finally {
-    await client.closeAsync();
-  }
+  await db.insert(schema.speakers).values(seedData.speakerRows).run();
+  await db.insert(schema.sessions).values(seedData.sessionRows).run();
+  await db.insert(schema.users).values(seedData.userRows).run();
+  await db.insert(schema.polls).values(seedData.pollRows).run();
+  await db.insert(schema.pollOptions).values(seedData.pollOptionRows).run();
+  await db.insert(schema.resources).values(seedData.resourceRows).run();
+  await db.insert(schema.questions).values(seedData.questionRows).run();
+  await db.insert(schema.answers).values(seedData.answerRows).run();
+  await db.insert(schema.venues).values(seedData.venueRows).run();
 }
