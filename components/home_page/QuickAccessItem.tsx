@@ -29,12 +29,13 @@ export default function QuickAccessItem({
       accessibilityRole="button"
       accessibilityLabel={item.label}
       hitSlop={8}
-      style={({ pressed }) => ({
-        opacity: pressed || disabled ? 0.7 : 1,
-      })}
+      style={{
+        width: `${width}%`,
+        opacity:  disabled ? 0.7 : 1,
+      }}
       
       className={`
-        mb-4 min-w-[${width}%] items-center justify-center rounded-[18px]
+        mb-4 w-[${width}%] items-center justify-center rounded-[10px]
         border border-white/10 bg-white/5 p-3
         ${disabled ? "opacity-40" : ""}
       `}

@@ -1,5 +1,5 @@
+import InfoRow from "@/components/shared/InfoRow";
 import SecondaryScreenHeader from "@/components/shared/SecondaryScreenHeader";
-import InfoRow from "@/components/tag/InfoRow";
 import Qrcode from "@/components/tag/Qrcode";
 import { Ionicons } from "@expo/vector-icons";
 import { Text, View } from "react-native";
