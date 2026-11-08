@@ -24,9 +24,9 @@ const seedData = {
     { id: 5, name: 'Open Panel Discussion', type: 'panel', date: '2026-12-03', time: '13:00', speakerId: 5 },
   ],
   userRows: [
-    { id: 1, name: 'Sara Khalid', email: 'sara.khalid@example.com', hospital: 'City General Hospital', location: 'Dubai', sessionsAttended: JSON.stringify([1, 2]), certificatesGained: JSON.stringify(['keynote-attendance']), savedItems: JSON.stringify([{ type: 'session', id: 3 }, { type: 'resource', id: 1 }]) },
-    { id: 2, name: 'John M?ller', email: 'john.muller@example.com', hospital: 'St. Mary Clinic', location: 'Berlin', sessionsAttended: JSON.stringify([2, 3, 4]), certificatesGained: JSON.stringify(['imaging-101', 'screening-basics']), savedItems: JSON.stringify([]) },
-    { id: 3, name: 'Li Wei', email: 'li.wei@example.com', hospital: null, location: null, sessionsAttended: JSON.stringify([]), certificatesGained: JSON.stringify([]), savedItems: JSON.stringify([]) },
+    { id: 1, name: 'Sara Khalid', email: 'sara.khalid@example.com', password: 'demo123', hospital: 'City General Hospital', location: 'Dubai', sessionsAttended: JSON.stringify([1, 2]), certificatesGained: JSON.stringify(['keynote-attendance']), savedItems: JSON.stringify([{ type: 'session', id: 3 }, { type: 'resource', id: 1 }]) },
+    { id: 2, name: 'John Müller', email: 'john.muller@example.com', password: 'demo123', hospital: 'St. Mary Clinic', location: 'Berlin', sessionsAttended: JSON.stringify([2, 3, 4]), certificatesGained: JSON.stringify(['imaging-101', 'screening-basics']), savedItems: JSON.stringify([]) },
+    { id: 3, name: 'Li Wei', email: 'li.wei@example.com', password: 'demo123', hospital: null, location: null, sessionsAttended: JSON.stringify([]), certificatesGained: JSON.stringify([]), savedItems: JSON.stringify([]) },
   ],
   pollRows: [
     { id: 1, name: 'Which topic should we cover next?', createdAt: '2026-11-01 10:00:00' },

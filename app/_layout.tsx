@@ -15,13 +15,12 @@ export {
 
 export default function RootLayout() {
   const { colorScheme, isDarkColorScheme } = useColorScheme();
-   useEffect(() => {
-    if (__DEV__) {
-      initDatabase()
-        .then(() => seedDatabaseIfEmpty())
-        .then(() => console.log("DB ready"))
-        .catch((err) => console.error("DB init failed:", err));
-    }
+
+  useEffect(() => {
+    initDatabase()
+      .then(() => seedDatabaseIfEmpty())
+      .then(() => console.log('DB ready'))
+      .catch((err) => console.error('DB init failed:', err));
   }, []);
 
   return (
@@ -33,6 +32,8 @@ export default function RootLayout() {
 
       <NavThemeProvider value={NAV_THEME[colorScheme]}>
         <Stack>
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen name="(auth)" options={{ headerShown: false }} />
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="(quick_access)" options={{ headerShown: false }} />
         </Stack>
