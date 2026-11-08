@@ -1,0 +1,2 @@
+export * from './speakers.service';
+

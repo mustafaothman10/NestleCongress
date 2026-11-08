@@ -1,10 +1,11 @@
 {
-  "name": "nestlecon",
+  "name": "nestlecongress",
   "version": "1.0.0",
   "main": "expo-router/entry",
   "dependencies": {
     "@expo/vector-icons": "^15.0.2",
     "@shopify/flash-list": "2.3.2",
+    "better-sqlite3": "^13.0.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "drizzle-orm": "^0.45.4",
@@ -33,6 +34,7 @@
     "tailwindcss": "^3.4.0"
   },
   "devDependencies": {
+    "@types/better-sqlite3": "^9.6.0",
     "@types/react": "~19.3.0",
     "drizzle-kit": "^0.31.11",
     "typescript": "~6.0.3"
@@ -41,7 +43,8 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "db:seed": "tsx services/seed/node-seed.ts"
   },
   "private": true
 }
