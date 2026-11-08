@@ -1,11 +1,11 @@
-
 import { sql } from 'drizzle-orm';
 import {
-    check,
-    integer,
-    real,
-    sqliteTable,
-    text,
+  check,
+  index,
+  integer,
+  real,
+  sqliteTable,
+  text,
 } from 'drizzle-orm/sqlite-core';
 
 // USERS
@@ -20,24 +20,28 @@ export const users = sqliteTable('users', {
   savedItems: text('saved_items').default('[]'),
 });
 
+// SPEAKERS
+// A speaker may have at most one session (enforced by the UNIQUE on sessions.speaker_id)
+export const speakers = sqliteTable('speakers', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  name: text('name').notNull(),
+  description: text('description').notNull(),
+  country: text('country').notNull(),
+});
+
 // SESSIONS
+// Every session has exactly one speaker (NOT NULL), and a speaker can only
+// be attached to one session (UNIQUE) => one-to-one, speaker side optional.
 export const sessions = sqliteTable('sessions', {
   id: integer('id').primaryKey({ autoIncrement: true }),
   name: text('name').notNull(),
   type: text('type').notNull(),
   date: text('date').notNull(),
   time: text('time').notNull(),
-  speakerId: integer('speaker_id').references(() => speakers.id, {
-    onDelete: 'set null',
-  }),
-});
-
-// SPEAKERS
-export const speakers = sqliteTable('speakers', {
-  id: integer('id').primaryKey({ autoIncrement: true }),
-  name: text('name').notNull(),
-  description: text('description').notNull(),
-  country: text('country').notNull(),
+  speakerId: integer('speaker_id')
+    .notNull()
+    .unique()
+    .references(() => speakers.id, { onDelete: 'restrict' }),
 });
 
 // POLLS
@@ -85,11 +89,25 @@ export const questions = sqliteTable(
     voteCount: integer('vote_count').notNull().default(0),
   },
   (table) => [
-    check(
-      'questions_answered_check',
-      sql`${table.answered} IN (0, 1)`
-    ),
+    check('questions_answered_check', sql`${table.answered} IN (0, 1)`),
   ]
+);
+
+// ANSWERS
+// One question has many answers; deleting a question deletes its answers.
+export const answers = sqliteTable(
+  'answers',
+  {
+    id: integer('id').primaryKey({ autoIncrement: true }),
+    questionId: integer('question_id')
+      .notNull()
+      .references(() => questions.id, { onDelete: 'cascade' }),
+    body: text('body').notNull(),
+    answeredAt: text('answered_at')
+      .notNull()
+      .default(sql`CURRENT_TIMESTAMP`),
+  },
+  (table) => [index('answers_question_id_idx').on(table.questionId)]
 );
 
 // VENUES
@@ -116,12 +134,3 @@ export const venues = sqliteTable(
     check('venues_accessible_check', sql`${table.accessible} IN (0, 1)`),
   ]
 );
-
-// ANSWERS
-export const answers = sqliteTable('answers', {
-  id: integer('id').primaryKey({ autoIncrement: true }),
-  body: text('body').notNull(),
-  answeredAt: text('answered_at')
-    .notNull()
-    .default(sql`CURRENT_TIMESTAMP`),
-});

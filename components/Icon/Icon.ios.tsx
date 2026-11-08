@@ -16,7 +16,7 @@ function Icon({
   const { colors } = useColorScheme();
   return (
     <SymbolView
-      name={name ?? 'questionmark'}
+      name={(name ?? 'questionmark') as any}
       tintColor={rgbaToHex(color ?? colors.foreground)}
       size={size}
       resizeMode="scaleAspectFit"

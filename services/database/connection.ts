@@ -1,13 +1,13 @@
 
 import {
-    openDatabaseAsync,
-    type SQLiteDatabase,
+  openDatabaseAsync,
+  type SQLiteDatabase,
 } from 'expo-sqlite';
 
 import { drizzle } from 'drizzle-orm/expo-sqlite';
 import { migrate } from 'drizzle-orm/expo-sqlite/migrator';
 
-import migrations from '../../../drizzle/migrations';
+import migrations from './../../drizzle/migrations';
 import * as schema from './schema';
 
 export const DB_NAME = 'nestle.db';
