@@ -5,3 +5,6 @@ export type UiSession = {
     speaker: string;
     category: "Keynote" | "Nutrition" | "Research";
 };
+
+export type Category = "All" | "Nutrition" | "Research" | "Pediatric";
+
