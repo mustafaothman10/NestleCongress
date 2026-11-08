@@ -1,6 +1,5 @@
 import InfoRow from "@/components/shared/InfoRow";
 import SecondaryScreenHeader from "@/components/shared/SecondaryScreenHeader";
-import Qrcode from "@/components/tag/Qrcode";
 import { Ionicons } from "@expo/vector-icons";
 import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -61,9 +60,6 @@ export default function NameTagScreen() {
                         />
                     </View>
 
-                    <View className="mt-3 items-center">
-                        <Qrcode />
-                    </View>
                 </View>
             </View>
         </SafeAreaView>

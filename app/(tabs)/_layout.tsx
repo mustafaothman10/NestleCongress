@@ -2,7 +2,6 @@ import { Tabs } from 'expo-router';
 import { SymbolView } from 'expo-symbols';
 
 import { useColorScheme } from '@/components/useColorScheme';
-import Colors from '@/constants/Colors';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -10,7 +9,17 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
+        tabBarActiveTintColor: '#ffffff',
+        tabBarInactiveTintColor: '#dbeafe',
+        tabBarStyle: {
+          backgroundColor: '#091d3e',
+          borderTopColor: '#091d3e',
+
+        },
+        tabBarLabelStyle: {
+          fontWeight: '600',
+          fontSize: 12,
+        },
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
         headerShown: false,
