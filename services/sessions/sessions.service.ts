@@ -1,7 +1,7 @@
 import { eq } from 'drizzle-orm';
 
 import { getDb } from '../database';
-import { sessions } from '../database/schema';
+import { sessions, speakers } from '../database/schema';
 
 export type Session = typeof sessions.$inferSelect;
 export type NewSession = typeof sessions.$inferInsert;
@@ -51,4 +51,20 @@ export async function deleteSession(id: number): Promise<boolean> {
   const db = getDb();
   const result = await db.delete(sessions).where(eq(sessions.id, id)).returning();
   return result.length > 0;
+}
+//quering the Sessions table and joining it with the speakers table to get the speaker name for each session. This will allow us to display the speaker name along with the session details in the app.
+export async function listSessionsWithSpeaker() {
+  const db = getDb();
+
+  return db
+    .select({
+      id: sessions.id,
+      title: sessions.name,
+      time: sessions.time,
+      date: sessions.date,
+      type: sessions.type,
+      speaker: speakers.name,
+    })
+    .from(sessions)
+    .leftJoin(speakers, eq(sessions.speakerId, speakers.id));
 }
